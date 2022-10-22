@@ -393,7 +393,9 @@ def convert_weights(model: nn.Module):
                 if attr is not None:
                     attr.data = attr.data.half()
 
-    model.apply(_convert_weights_to_fp16)
+    # model.apply(_convert_weights_to_fp16)
+    # Do not convert weights to avoid incompatible precision when using CLIP with Instant NeRF
+    pass
 
 
 def build_model(state_dict: dict):
